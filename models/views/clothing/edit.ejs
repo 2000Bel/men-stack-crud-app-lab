@@ -8,7 +8,7 @@
   <body>
     
     <h1>Edit <%= clothing.name %></h1>
-    <form action="/fruits/<%= clothing._id %>?_method=PUT" method="POST">
+    <form action="/clothing/<%= clothing._id %>?_method=PUT" method="POST">
       
         <label for="name">Name:</label>
       <input type="text" name="name" id="name" value="<%= clothing.name %>"/>

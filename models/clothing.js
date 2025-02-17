@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
-const clothingtSchema = new mongoose.Schema({
+const clothingSchema = new mongoose.Schema({
   name: String,
   category: String,
   price: Number,
   inStock: Boolean,
 });
 
-const clothing = mongoose.model('clothing', clothingtSchema);
-
+const Clothing = mongoose.model('Clothing', clothingtSchema);
+const Clothing = require('./models/clothing.js');
 module.exports = clothing;

@@ -14,7 +14,7 @@ mongoose.connection.on('connected', () => {
   console.log(`Connected on MongoDB ${mongoose.connection.name}`);
 });
 
-const clothing = require('./models/clothing.js');
+const Clothing = require('./models/clothing.js');
 
 // middleware
 app.use(express.urlencoded({ extended: false }));
@@ -28,7 +28,7 @@ app.get('/', (req, res) => {
 
 // GET /clothing
 app.get('/clothing', async (req, res) => {
-  const allclothing = await clothing.find();
+  const allClothing = await Clothing.find();
   console.log(allclothing);
   res.render('clothing/index.ejs', { clothing: allclothing });
 });
@@ -40,7 +40,7 @@ app.get('/clothing/new', (req, res) => {
 
 // GET /clothing/:id
 app.get('/clothing/:clothingId', async (req, res) => {
-  const foundclothing = await clothing.findById(req.params.clothingId);
+  const foundClothing = await Clothing.findById(req.params.clothingId);
   res.render('clothing/show.ejs', { clothing: foundclothing });
 });
 
@@ -52,17 +52,17 @@ app.post('/clothing', async (req, res) => {
     req.body.inStock = false;
   }
 
-  await clothing.create(req.body);
+  await Clothing.create(req.body);
   res.redirect('/clothing');
 });
 
 app.delete('/clothing/:clothingId', async (req, res) => {
-  await clothing.findByIdAndDelete(req.params.clothingId);
+  await Clothing.findByIdAndDelete(req.params.clothingId);
   res.redirect('/clothing');
 });
 
 app.get('/clothing/:clothingId/edit', async (req, res) => {
-  const foundclothing = await clothing.findById(req.params.clothingId);
+  const foundclothing = await Clothing.findById(req.params.clothingId);
   res.render('clothing/edit.ejs', { clothing: foundclothing });
 });
 
@@ -73,7 +73,7 @@ app.put('/clothing/:clothingId', async (req, res) => {
     req.body.inStock = false;
   }
 
-  await clothing.findByIdAndUpdate(req.params.clothingId, req.body);
+  await Clothing.findByIdAndUpdate(req.params.clothingId, req.body);
 
   res.redirect(`/clothing/${req.params.clothingId}`);
 });

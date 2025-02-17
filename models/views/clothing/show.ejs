@@ -13,7 +13,7 @@
       <p>This clothing is not ready to sell!</p>
     <% } %>
     
-    <form action="/clothings/<%= clothing._id %>?_method=DELETE" method="POST">
+    <form action="/clothing/<%= clothing._id %>?_method=DELETE" method="POST">
       <button type="submit">Delete <%= clothing.name %></button>
     </form>
 

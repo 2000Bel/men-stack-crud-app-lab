@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create a clothing</title>
+  </head>
+  <body>
+    <a href="/clothings/">Back to clothings</a>
+    <h1>Create a New clothing!</h1>
+    <form action="/clothings" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" name="name" id="name" /> 
+
+      <label for="category">Category:</label>
+      <input type="text" name="category" id="category" /> 
+
+      <label for="price">Price:</label>
+      <input type="number" name="pice" id="price" /> 
+
+      <label for="inStock"></label>Is in Stock?</label>
+      <input type="checkbox" name="inStock" id="inStock" />
+      
+      <button type="submit">Add clothing</button>
+    </form>
+  </body>
+</html>

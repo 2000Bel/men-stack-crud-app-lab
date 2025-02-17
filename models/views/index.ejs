@@ -1,0 +1,25 @@
+<!-- views/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clothing Store</title>
+  </head>
+  <body>
+    <h1>Clothings List</h1>
+    <a href="/new">Add Clothing</a>
+    <ul>
+      <% clothes.forEach(clothing => {%)>
+      <li>
+        <%= clothing.name%>  -  <%= clothing.category%> - <%= clothing.pice%>
+        [<a href="/edit/<%= clothing._id%>">Edit</a>]
+        <form action="/delete/<%= clothing._id %>" method="POST" style="display:inline;">
+          <button type="submit">Delete</button>
+          </form>
+        </li>
+        <%})%>
+    </ul>
+  </body>
+</html>

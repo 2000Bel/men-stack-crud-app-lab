@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit clothing</title>
+  </head>
+  <body>
+    
+    <h1>Edit <%= clothing.name %></h1>
+    <form action="/fruits/<%= clothing._id %>?_method=PUT" method="POST">
+      
+        <label for="name">Name:</label>
+      <input type="text" name="name" id="name" value="<%= clothing.name %>"/>
+  
+      <label for="category">category:</label>
+      <input type="text" name="category" id="category" value="<%= clothing.category %>"/>
+  
+      <label for="price">price:</label>
+      <input type="number" name="price" id="price" value="<%= clothing.price %>"/>
+  
+      <label for="inStock">Ready to sell?</label>
+      <input type="checkbox" name="inStock" id="inStock" <% if (clothing.inStock) { %> checked <% } %> />
+      
+      <button type="submit">Update clothing</button>
+    </form>
+    <a href="/clothing/">Back to clothing</a>
+  </body>
+</html>

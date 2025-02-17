@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>clothing Show Page</title>
+  </head>
+  <body>
+    <h1><%= clothing.name %></h1>
+    <% if (clothing.inStock) { %>
+      <p>This clothing is ready to sell!</p>
+    <% } else { %>
+      <p>This clothing is not ready to sell!</p>
+    <% } %>
+    
+    <form action="/clothings/<%= clothing._id %>?_method=DELETE" method="POST">
+      <button type="submit">Delete <%= clothing.name %></button>
+    </form>
+
+    <a href="/clothings/<%= clothing._id %>/edit">Edit <%= clothing.name %></a>
+
+    <a href="/clothings">Back to clothings</a>
+  </body>
+</html>

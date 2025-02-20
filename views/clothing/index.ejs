@@ -9,9 +9,7 @@
     <a href="/clothing/new">Add New clothing</a>
     <h1>All clothing</h1>
     <ul>
-      <% clothing.forEach(item => { %>
         <li><a href="/clothing/<%= item._id %>"><%= item.name %></a></li>
-      <% }) %>
     </ul>
   </body>
 </html>

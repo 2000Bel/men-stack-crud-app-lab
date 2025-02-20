@@ -7,6 +7,6 @@ const clothingSchema = new mongoose.Schema({
   inStock: Boolean,
 });
 
-const Clothing = mongoose.model('Clothing', clothingtSchema);
-const Clothing = require('./models/clothing.js');
+const clothing = mongoose.model('clothing', clothingtSchema);
+const clothing = require('./models/clothing.js');
 module.exports = clothing;

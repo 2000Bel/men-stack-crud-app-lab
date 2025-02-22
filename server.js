@@ -3,7 +3,7 @@ dotenv.config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-const methodOverride = require('method-override');
+//const methodOverride = require('method-override');
 const morgan = require('morgan');
 
 const app = express();
@@ -18,7 +18,7 @@ const clothing = require('./models/clothing.js');
 
 // middleware
 app.use(express.urlencoded({ extended: false }));
-app.use(methodOverride('_method'));
+//app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 // GET /
@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
 // GET /clothing
 app.get('/clothing', async (req, res) => {
   const allClothing = await clothing.find();
-  console.log(allclothing);
-  res.render('clothing/index.ejs', { clothing: allclothing });
+  console.log(allClothing);
+  res.render('clothing/index.ejs', { clothing: allClothing });
 });
 
 // GET /clothing/new
@@ -41,7 +41,7 @@ app.get('/clothing/new', (req, res) => {
 // GET /clothing/:id
 app.get('/clothing/:clothingId', async (req, res) => {
   const foundClothing = await clothing.findById(req.params.clothingId);
-  res.render('clothing/show.ejs', { clothing: foundclothing });
+  res.render('clothing/show.ejs', { clothing: foundClothing });
 });
 
 // POST /clothing
@@ -57,6 +57,7 @@ app.post('/clothing', async (req, res) => {
 });
 
 app.delete('/clothing/:clothingId', async (req, res) => {
+  console.log('req.params.clothingId', req.params.clothingId);
   await clothing.findByIdAndDelete(req.params.clothingId);
   res.redirect('/clothing');
 });

@@ -58,7 +58,7 @@ app.post('/clothing', async (req, res) => {
 //DELETE /clothing/:id
 app.delete('/clothing/:clothingId', async (req, res) => {
   console.log('req.params.clothingId', req.params.clothingId);
-  //await clothing.findByIdAndDelete(req.params.clothingId);
+  await clothing.findByIdAndDelete(req.params.clothingId);
   res.redirect('/clothing');
 });
 

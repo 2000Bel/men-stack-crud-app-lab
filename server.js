@@ -3,7 +3,7 @@ dotenv.config();
 
 const express = require('express');
 const mongoose = require('mongoose');
-//const methodOverride = require('method-override');
+const methodOverride = require('method-override');
 const morgan = require('morgan');
 
 const app = express();
@@ -18,7 +18,7 @@ const clothing = require('./models/clothing.js');
 
 // middleware
 app.use(express.urlencoded({ extended: false }));
-//app.use(methodOverride('_method'));
+app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 
 // GET /
@@ -51,14 +51,14 @@ app.post('/clothing', async (req, res) => {
   } else {
     req.body.inStock = false;
   }
-
   await clothing.create(req.body);
   res.redirect('/clothing');
 });
 
+//DELETE /clothing/:id
 app.delete('/clothing/:clothingId', async (req, res) => {
   console.log('req.params.clothingId', req.params.clothingId);
-  await clothing.findByIdAndDelete(req.params.clothingId);
+  //await clothing.findByIdAndDelete(req.params.clothingId);
   res.redirect('/clothing');
 });
 
@@ -67,6 +67,7 @@ app.get('/clothing/:clothingId/edit', async (req, res) => {
   res.render('clothing/edit.ejs', { clothing: foundclothing });
 });
 
+// PUT /clothing/:id
 app.put('/clothing/:clothingId', async (req, res) => {
   if (req.body.inStock === 'on') {
     req.body.inStock = true;
